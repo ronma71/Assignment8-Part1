@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Assignment 8 - Part 1</title>
+    
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+    
+    <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            //1-click() method button
+            $('#clickButton').click(function() {
+                alert('You have clicked the click() button. Congratulations.');    
+            });
+            
+            //2-bind() method button
+            $('#bindButton').bind('click', function() {
+                alert('You have clicked the bind() button. Well done.');    
+            });
+            
+            //3-on() method button
+            $('#onButton').on('click', function() {
+                alert('You have clicked the on() button. You are doing great.');    
+            });
+            
+            //4-on() method 2 buttons
+            $('#on1of2, #on2of2').on('click', function() {
+                alert('You have clicked either the on()-1 button or the on()-2 button. Way to go.');    
+            });
+            
+            //5-div, clicked, mouseover, mouseleave
+            /*$('div').css('width', '400px').css('height', '400px').css('border', 'solid 1px #ccc');
+            $('div').on('click mouseover mouseleave', function() {
+                $('div').off('mouseover mouseleave', function() {
+                });
+                alert('You have either clicked, moused over or mouse left the div text element. That is spectacular.');    
+            });*/
+            
+            //6-div span alerts for: clicked, mouseover, mouseleave
+            $('div').css('width', '400px').css('height', '400px').css('border', 'solid 1px #ccc');
+            $('div').on('mouseover', function() {
+                $('#divSpan').off('mouseover', function() {
+                });
+                alert('You have just moved your mouse cursor over the div text element.');    
+            });
+            $('div').on('click', function() {
+                $('#divSpan').off('mouseover', function() {
+                });
+                alert('Now you have just clicked on the text of the div text element.');    
+            });
+            $('div').on('mouseleave', function() {
+                $('#divSpan').off('mouseover mouseleave', function() {
+                });
+                alert('Your mouse cursor has moved outside of the div text element. You have now witnessed a glimpse into the power of jQuery.');    
+            });
+            
+            //7-prevent link redirection with alert
+            $('a').click(function() {
+                $('a').css('color', 'red');
+                event.preventDefault();
+                alert('preventDefault() has blocked your attempt to go to google.com. You have been denied.');
+            });
+        })
+    
+    </script>
+</head>
+
+<body>
+   <button id="clickButton">This is a click() button</button>
+   <button id="bindButton">This is a bind() button</button>
+   <button id="onButton">This is an on() button</button>
+   <button id="on1of2">This is on()-1 button</button>
+   <button id="on2of2">This is on()-2 button</button>
+   <hr />
+   <div>This is a div for Question 5<span id="divSpan"></span></div>
+   <hr />
+   <a href="http://www.google.com">Go to google.com</a>
+    
+</body>
+</html>
